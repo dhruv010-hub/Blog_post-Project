@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ object.title }}</h2>
+<p><strong>Author:</strong> {{ object.author }}</p>
+<p>{{ object.content }}</p>
+{% if user.is_authenticated %}
+    <a href="{% url 'post_update' object.pk %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'post_delete' object.pk %}" class="btn btn-danger">Delete</a>
+{% endif %}
+{% endblock %}

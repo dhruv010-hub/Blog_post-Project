@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Posts</h2>
+<form method="get" class="mb-3">
+    <input type="text" name="q" placeholder="Search title..." class="form-control" value="{{ request.GET.q }}">
+</form>
+<ul class="list-group">
+    {% for post in posts %}
+        <li class="list-group-item">
+            <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+            <small class="text-muted float-end">{{ post.created_at }}</small>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No posts found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
